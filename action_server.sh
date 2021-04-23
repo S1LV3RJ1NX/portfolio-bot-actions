@@ -1,1 +1,1 @@
-run python -m rasa_sdk.endpoint --actions actions --cors "*" --debug -p $PORT 
+python -m rasa_sdk --actions actions --cors "*" --debug -p $PORT 
