@@ -1,6 +1,6 @@
 build:
   docker:
     web: Dockerfile
-
 run:
-	web: python3 -m rasa_sdk.endpoint --actions actions --cors "*" --debug -p $PORT 
+  web: run python -m rasa_sdk.endpoint --actions actions --cors "*" --debug -p $PORT 
+ 
