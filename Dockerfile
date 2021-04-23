@@ -1,19 +1,18 @@
-# Extend the official Rasa SDK image
-FROM rasa/rasa-sdk:2.5.0
+FROM python:3.8-slim
 
-# Use subdirectory as working directory
 WORKDIR /app
 
-# Copy any additional custom requirements, if necessary (uncomment next line)
-COPY requirements-actions.txt ./
+# Install system libraries
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get install -y gcc
 
-# Change back to root user to install dependencies
-USER root
+# Install project dependencies
+COPY ./requirements-actions.txt .
 
-# Install extra requirements for actions code, if necessary (uncomment next line)
-RUN pip install -r requirements-actions.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements-actions.txt
 
-
-ADD . /app/
+COPY . .
 RUN chmod +x /app/action_server.sh
 CMD /app/action_server.sh
