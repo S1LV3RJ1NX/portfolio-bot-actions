@@ -16,8 +16,8 @@ RUN pip install -r requirements-actions.txt
 # Copy actions folder to working directory
 COPY . /app/actions
 
-RUN chmod +x /app/actions/action_server.sh
-CMD /app/actions/action_server.sh
+# RUN chmod +x /app/actions/action_server.sh
+# CMD /app/actions/action_server.sh
 
 # Back to user mode
 USER 1001
