@@ -16,9 +16,9 @@ RUN pip install -r requirements-actions.txt
 # Copy actions folder to working directory
 COPY . /app/actions
 
-# RUN chmod +x /app/actions/action_server.sh
+RUN python -m rasa_sdk.endpoint --actions actions --cors "*" --debug -p $PORT
 # CMD /app/actions/action_server.sh
-CMD ["python", "-m", "rasa_sdk.endpoint", "--actions" "actions" "--cors", "*", "--debug", "-p", "$PORT" ]
+#CMD ["python", "-m", "rasa_sdk.endpoint", "--actions" "actions" "--cors", "*", "--debug", "-p", "$PORT" ]
 
 # Back to user mode
-USER 1001
+#USER 1001
